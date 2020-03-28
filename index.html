@@ -3,9 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!--Local CSS-->
+   <link type="text/css" rel="stylesheet" src="css/styles.css">
+   <!--Reset CSS-->
+   <link type="text/css" rel="stylesheet" src="css/reset.css">
+    
     <title>News & Photos</title>
+
 </head>
 <body>
+   <!--Navbar-->
+    <nav>
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="" >Favorites</a></li>
+            <li><a href="" >My Media</a></li>
+            <li><a href="" ></a></li>
+            <li><a href="" ></a></li>
+          </ul>
+        </div>
+   </nav>
+   <!--End of Navbar-->
+
+   
+   <div class="section no-pad-bot" id="index-banner">
+       <div class="container">
+           <br><br>
+           <h1 class="header center blue-text">News and Photo Applciation</h1>
+           <div class="row center">
+               <h2 class="header col s12 light">Search current news from many locations and inspect their beauty as well!</h2>
+           </div>
+       </div>
+   </div>
+
+     
+   <div class="row center">
+    <div class="col m3">
+      <div class="card">
+        <div class="card-image">
+          <img src="data:image/png;base64,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">
+          <span class="card-title" style="width:100%; background: rgba(0, 0, 0, 0.5);">Favorites</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+    <div class="col m3">
+      <div class="card">
+        <div class="card-image">
+          <img src="http://www.ilikewallpaper.net/ipad-wallpapers/download/2268/Square-Pattern-ipad-wallpaper-ilikewallpaper_com.jpg">
+          <span class="card-title" style="width:100%; background: rgba(0, 0, 0, 0.5);">My Media</span>
+        </div>
+        <div class="card-content">
+          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">This is a link</a>
+        </div>
+      </div>
+    </div>
+    <div class="col m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="http://www.ilikewallpaper.net/ipad-wallpapers/download/2268/Square-Pattern-ipad-wallpaper-ilikewallpaper_com.jpg">
+            <span class="card-title" style="width:100%; background: rgba(0, 0, 0, 0.5);">Sample3</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+      </div>
+      <div class="col m3">
+        <div class="card">
+          <div class="card-image">
+            <img src="data:image/png;base64,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">
+            <span class="card-title" style="width:100%; background: rgba(0, 0, 0, 0.5);">Sample4</span>
+          </div>
+          <div class="card-content">
+            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <div class="card-action">
+            <a href="#">This is a link</a>
+          </div>
+        </div>
+      </div>
+  </div>
+      
+      
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+     <!--Jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <!--Local Javascript-->
+    <script type="text/javascript" src="js/script.js.js"></script>
 </body>
 </html>

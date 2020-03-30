@@ -1,0 +1,21 @@
+.switch label input[type=checkbox]:checked+.lever:after {
+    /* darker blue */
+    background-color: #1565c0;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    /* lighter blue */
+    background-color: #1976d2; 
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: #1565c0;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
+    border: 2px solid #1565c0;
+}
+
+.input-field input[type="text"].validate:focus{
+    border-bottom: 2px solid #1565c0;
+}

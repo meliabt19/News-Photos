@@ -1,4 +1,5 @@
 const NEWS_API_KEY = 'a75938fbed57442696e756c8b556a3e8';
+const PLACES_API_KEY = 'AIzaSyA226PQXOi5BSA7kJuRJYQxforZ980b7_s';
 
 const PLACES_API_KEY = '';
 

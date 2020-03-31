@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Material Icons-->
@@ -14,18 +16,19 @@
    <!--Reset CSS-->
    <link type="text/css" rel="stylesheet" src="css/reset.css">
     
-    <title>News & Photos Search</title>
+    <title>News & Photos-Search Results</title>
+
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
 
 </head>
 <body>
-   <!--Navbar-->
-   <nav>
-       <div class="nav-wrapper blue darken-3">
-           <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
-           <ul class="right hide-on-med-and-down">
+    
+    <nav>
+        <div class="nav-wrapper blue darken-3">
+          <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+          <ul class="right hide-on-med-and-down">
             <li><a href="favorites.html" >Favorites</a></li>
             <li><a href="mymedia.html" >My Media</a></li>
             <li><a href="search_form.html" >Search</a></li>
@@ -33,138 +36,12 @@
           </ul>
         </div>
    </nav>
-   <!--End of Navbar-->
+   
 
-   <div class="row">
-    <form class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
-                <input placeholder="Keywords" id="place_name" type="text" class="validate">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <label><h4>News:</h4></label>
-            </div>
-          </div>
-        <div class="row">
-            <div class="col s12">
-              <label><h5>Category:</h5></label>
-            </div>
-          </div>
-            <div class="row">
-                <div class="col s2">
-                    <label>
-                        <input name="category" type="radio" checked />
-                        <span>All</span>
-                    </label>
-                </div>
-                <div class="col s2">
-                    <label>
-                        <input name="category" type="radio" />
-                        <span>Politics</span>
-                    </label>
-                </div>
-                <div class="col s2">
-                    <label>
-                        <input name="category" type="radio" />
-                        <span>Traffic</span>
-                    </label>
-                </div>
-                <div class="col s2">
-                    <label>
-                        <input name="category" type="radio" />
-                        <span>Sports</span>
-                    </label>
-                </div>
-                <div class="col s2">
-                    <label>
-                        <input name="category" type="radio" />
-                        <span>Weather</span>
-                    </label>
-                </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-                <label><h5>Articles:</h5></label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" checked />
-                    <span>All</span>
-                </label>
-            </div>
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" />
-                    <span>Headlines</span>
-                </label>
-            </div>
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" />
-                    <span>This Week</span>
-                </label>
-            </div>
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" />
-                    <span>This Month</span>
-                </label>
-            </div>
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" />
-                    <span>This Year</span>
-                </label>
-            </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-            <label><h4>Places:</h4></label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-            <input placeholder="Place Name" id="place_name" type="text" class="validate">
-          </div>
-      </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-            <input placeholder="Historical Sites" id="historical_sites" type="text" class="validate">
-        </div>
-      </div>
-      <div class="row">
-        <div class="switch col s6">
-            <label>
-              Include Images?
-              <input type="checkbox" checked>
-              <span class="lever"></span>
-            </label>
-        </div>
-        <div class="switch col s6">
-            <label>
-              Include Videos?
-              <input type="checkbox" checked>
-              <span class="lever"></span>
-            </label>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col s12">
-            <button class="btn waves-effect waves-light right blue darken-3" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-            </button>
-          </div>
-      </div>
-    </form>
-  </div>
 
-  <!--Link Cards-->
-  <div class="row center">
+
+   <!--Link Cards-->
+   <div class="row center">
     <div class="section">
      <div class="col m3">
        <div class="card blue accent-3">
@@ -254,10 +131,6 @@
    </footer>
    <!--End of Footer-->
 
-     
- 
-      
-    
 
 
 
@@ -266,14 +139,6 @@
 
 
 
-
-
-
-
-
-
-    
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/script.js"></script>

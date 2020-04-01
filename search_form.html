@@ -36,7 +36,7 @@
    <!--End of Navbar-->
 
    <div class="row">
-    <form class="col s12">
+    <form id="search-form" class="col s12">
         <div class="row">
             <div class="input-field col s12">
                 <input placeholder="Keywords" id="place_name" type="text" class="validate">
@@ -131,6 +131,54 @@
             <input placeholder="Place Name" id="place_name" type="text" class="validate">
           </div>
       </div>
+      <div class="row">
+        <div class="col s12">
+          <label><h5>Type:</h5></label>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col s2">
+                <label>
+                    <input name="category" type="radio" checked />
+                    <span>All</span>
+                </label>
+            </div>
+            <div class="col s2">
+                <label>
+                    <input name="category" type="radio" />
+                    <span>Restaurants</span>
+                </label>
+            </div>
+            <div class="col s2">
+                <label>
+                    <input name="category" type="radio" />
+                    <span>Bars</span>
+                </label>
+            </div>
+            <div class="col s2">
+                <label>
+                    <input name="category" type="radio" />
+                    <span>Parks</span>
+                </label>
+            </div>
+            <div class="col s2">
+                <label>
+                    <input name="category" type="radio" />
+                    <span>Monuments</span>
+                </label>
+            </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <label><h5>Within:</h5></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4">
+            <p class="range-field">
+                <input type="range" id="radius" min="50" max="1000" />
+            </p>
+        </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
@@ -141,7 +189,7 @@
         <div class="switch col s6">
             <label>
               Include Images?
-              <input type="checkbox" checked>
+              <input id="include_images" type="checkbox" checked>
               <span class="lever"></span>
             </label>
         </div>
@@ -155,33 +203,16 @@
       </div>
       <div class="row">
           <div class="col s12">
-            <button class="btn waves-effect waves-light right blue darken-3" type="submit" name="action">Submit
+            <button id="send-query" class="btn waves-effect waves-light right blue darken-3" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
             </button>
           </div>
       </div>
     </form>
+    <div id="search-results">
+
+    </div>
   </div>
-
-     
- 
-      
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

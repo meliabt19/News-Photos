@@ -38,12 +38,6 @@ var type = "all";
 
 $(document).ready(function() { 
 
-    getUserLocation();
-
-    var category = "";
-    var articles = ""
-    var sites = "";
-
     $("#place-type-select").on("change", function() {
         console.log('changed type');
         type = $("#place-type-select").val();
@@ -57,7 +51,6 @@ $(document).ready(function() {
 
     $('#search-form').submit(function(event) {
         event.preventDefault();
-        console.log('form submitted');
 
         $("#search-results").empty();
 
@@ -75,34 +68,23 @@ $(document).ready(function() {
         if (keywords_list !== "") {
             //add place name to keywords list:
             keywords_list = keywords_list.split(" ").join("+");
-            keywords_list = keywords_list.toString();
+            keywords_list = keywords_list.toString().trim();
             console.log("keywords_list " + keywords_list);
         } 
-
-        //get location input:
-        location_name = $("#location").val();  
-        console.log("location: ", location_name);
 
         //get type input:
         type = $("#place-type-select option:selected").val();
         console.log("type: " + type);
 
-        if (location_name !== "" && keywords_list !== "") {
-            const locationInfo = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + location_name + '&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating,geometry&key=' + PLACES_API_KEY;
-            searchPlaceInfo(locationInfo);
-        }
- 
-        if (location_name === "" && keywords_list !== "") {
-            findPlaces();
-        }
+        //get location input:
+        location_name = $("#location").val();  
+        console.log("location: ", location_name);
 
-        if (keywords_list === "" && location_name !== "") {
-            const locationInfo = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + location_name + '&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating,geometry&key=' + PLACES_API_KEY;
-            searchPlaceInfo(locationInfo);
+        if (location_name === "") {
+            getUserLocation();
         }
-
-        if (keywords_list === "" && location_name === "") {
-            findPlaces();
+        else {
+            executeSearch();
         }
 
     });
@@ -123,9 +105,9 @@ $(document).ready(function() {
     $("#within_amt_text").on("blur", function() {
         within = $(this).val();
         within = parseInt(within);
-        if (within > 100000) {
-            $(this).val(100000);
-            $("#within_amt").text(10000 + " meters");
+        if (within > 50000) {
+            $(this).val(50000);
+            $("#within_amt").text(50000 + " meters");
         }
         if (within < 500) {
             $(this).val(500);
@@ -142,26 +124,60 @@ $(document).ready(function() {
 
 });
 
+function resetVariables() {
+    lat = null;
+    lng = null;
+    within = 0;
+    location_name = "";
+    keywords_list = "";
+    type = "all";
+}
+
 function getUserLocation() {
 
     //HTML5 geolocation - get the user's location:
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          //set coords globals:
-          lat = pos.lat;
-          lng = pos.lng;
-
-        }, function() {
-            console.log("Cannot find your location");
+    var getPosition = function (options) {
+        return new Promise(function (resolve, reject) {
+            navigator.geolocation.getCurrentPosition(resolve, reject, options);
         });
-      } else {
-        // Browser doesn't support Geolocation
-        console.log("Your browser does not support Geolocation");
-      }
+    }
+    
+    getPosition()
+        .then((position) => {
+        console.log(position);
+        
+        //set coords globals:
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+
+        executeSearch();
+
+        })
+        .catch((err) => {
+            console.error(err.message);
+        });
+
+}
+
+function executeSearch() {
+
+    if (location_name !== "" && keywords_list !== "") {
+        const locationInfo = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + location_name + '&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating,geometry&key=' + PLACES_API_KEY;
+        searchPlaceInfo(locationInfo);
+    }
+
+    if (location_name === "" && keywords_list !== "") {
+        findPlaces();
+    }
+
+    if (keywords_list === "" && location_name !== "") {
+        const locationInfo = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + location_name + '&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating,geometry&key=' + PLACES_API_KEY;
+        searchPlaceInfo(locationInfo);
+    }
+
+    if (keywords_list === "" && location_name === "") {
+        findPlaces();
+    }
 
 }
 
@@ -194,6 +210,9 @@ function sendPlaceInfoResponse(response) {
     var author_ref = response.candidates[0].photos[0].html_attributions;
     console.log('photo reference: ' + photo_reference);
 
+    //get location results address:
+    var address = response.candidates[0].formatted_address;
+
     //if location is left blank, use the user's geolocation:
     if (location_name !== "") {
         //get latitude:
@@ -211,7 +230,7 @@ function sendPlaceInfoResponse(response) {
 
     findPlaces();
 
-    getPhotos(place_results_name, author_ref, photo_reference);
+    displayLocationResults(place_results_name, author_ref, photo_reference, address);
 
 }
 
@@ -251,66 +270,96 @@ function getPlaceNearbyKeywordDetails(placeLocation) {
     });  
 }
 
-function getPlaceLocationDetails(placeLocation) {
-    $.ajax({
-        url: placeLocation,
-        method: "GET",
-        success: sendPlaceLocationDetails,
-        error: function() {
-            //ajax call failed:
-            alert('Error!');
-        }
-    });  
-}
-
 function sendPlaceNearbyKeywordDetails(response) {
+
+    if (response.status == "ZERO_RESULTS") {
+        $('#search-results').html('<h4>Results Not Found!</h4>');
+    }
+
     console.log("Place Nearby Keyword Details: ", response);
 
     var places = response.results;
 
     $.each(places, function(index, place) {
-        //console.log(index + " Place Name: " + place.name);
-        //console.log(index + " Place Photo Ref: " + place.photos[0].photo_reference);
-        //console.log(index + " Place author Ref: " + place.photos[0].html_attributions[0]);
+
         var place_name = place.name;
+        var address = place.vicinity;
+        var open = place.opening_hours.open_now;
+
+        if (open !== undefined) {
+            if (open === true) {
+                var opening_hours = "Open";
+            }
+            else {
+                var opening_hours = "Closed";
+            }
+        }
+        else {
+            var opening_hours = '<span class="fine-text">Status Not Available</span>';
+        }
+
+        if (place.rating !== undefined) {
+            var avg_rating = place.rating;
+        }
+        else {
+            var avg_rating = '<span class="fine-text>Not Available</span>';
+        }
+
+        var type_categories = place.types;
+
         if (place.photos !== undefined) {
             var photo_reference = place.photos[0].photo_reference;
             var author_ref = place.photos[0].html_attributions[0];
         }
         else {
-            photo_reference = "";
-            author_ref = "";
+            photo_reference = '';
+            author_ref = '';
         }
-        getPhotos(place_name, author_ref, photo_reference);
+        displayPlaceResults(place_name, author_ref, photo_reference, address, opening_hours, avg_rating, type_categories);
     });
+    resetVariables();
 }
 
-function sendPlaceLocationDetails(response) {
-    console.log("Place location Details: ", response);  
+function displayLocationResults(place_name, author_ref, photo_reference, address) {
 
-    //get results place name:
-    var place_name = response.candidates[0].name;
-
-    //get results place photo:
-    var photo_reference = response.candidates[0].photos[0].photo_reference;
-
-    //get author attribution link:
-    var author_ref = response.candidates[0].photos[0].html_attributions[0];
-
-    getPhotos(place_name, author_ref, photo_reference);
-}
-
-function getPhotos(place_name, author_ref, photo_reference) {
-
-    if (photo_reference !== "") {
-        var photo = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photo_reference + '&key=' + PLACES_API_KEY;
-        var image = '<img src="' + photo + '" alt="' + place_name + '">'
-        author_ref = '<p>Photo by: ' + author_ref + '</p>';
-        $('#search-results').append('<h4>' + place_name + '</h4>' +
-                                    image +
-                                    author_ref);
+    if (photo_reference !== '') {
+        var photo = '<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photo_reference + '&key=' + PLACES_API_KEY + '" alt="' + place_name + '">';
     }
     else {
-        $('#search-results').append('<h4>' + place_name + '</h4>');
+        var photo = '<p class="fine-text">Place Image Not Available</p>';
     }
+
+    $('#search-results').append('<h4>' + place_name + '</h4>' +
+                                '<h6>' + address + '</h6>' +
+                                 photo +
+                                '<p>Photo by: ' + author_ref + '</p>');
+}
+
+function displayPlaceResults(place_name, author_ref, photo_reference, address, opening_hours, avg_rating, type_categories) {
+
+    var categories = "";
+
+    $.each(type_categories, function(index, category) {
+        if (index !== type_categories.length - 1) {
+            categories += category + ", ";
+        }
+        else {
+            categories += category;
+        }
+    });
+
+    if (photo_reference !== "") {
+        var photo = '<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photo_reference + '&key=' + PLACES_API_KEY + '" alt="' + place_name + '">';
+    }
+    else {
+        var photo = '<p class="fine-text">Place Image Not Available</p>';
+    }
+
+        $('#search-results').append('<h4>' + place_name + '</h4>' +
+                                    '<h6>' + address + '</h6>' +
+                                    '<p>Is Currently ' + opening_hours + ' Rating: ' + avg_rating + '<p>' +
+                                    photo +
+                                    '<p>Photo by: ' + author_ref + '</p>' + 
+                                    '<p>Type Categories: ' + categories + '</p>'
+                                    );
 }

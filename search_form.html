@@ -53,10 +53,10 @@
 
   <!--Search Form-->
    <div class="row">
-    <form class="col s12">
+    <form id="search-form" class="col s12">
         <div class="row">
             <div class="input-field col s12">
-                <input placeholder="Keywords" id="place_name" type="text" class="validate">
+                <input placeholder="Keywords" id="keywords" type="text" class="validate">
             </div>
         </div>
         <div class="row">
@@ -72,31 +72,31 @@
             <div class="row">
                 <div class="col s2">
                     <label>
-                        <input name="category" type="radio" checked />
+                        <input name="article_category" type="radio" checked />
                         <span>All</span>
                     </label>
                 </div>
                 <div class="col s2">
                     <label>
-                        <input name="category" type="radio" />
+                        <input name="article_category" type="radio"  />
                         <span>Politics</span>
                     </label>
                 </div>
                 <div class="col s2">
                     <label>
-                        <input name="category" type="radio" />
+                        <input name="article_category" type="radio" />
                         <span>Traffic</span>
                     </label>
                 </div>
                 <div class="col s2">
                     <label>
-                        <input name="category" type="radio" />
+                        <input name="article_category" type="radio" />
                         <span>Sports</span>
                     </label>
                 </div>
                 <div class="col s2">
                     <label>
-                        <input name="category" type="radio" />
+                        <input name="article_category" type="radio" />
                         <span>Weather</span>
                     </label>
                 </div>
@@ -146,39 +146,58 @@
       <div class="row">
         <div class="input-field col s12">
             <input placeholder="Place Name" id="place_name" type="text" class="validate">
-          </div>
-      </div>
+        </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-            <input placeholder="Historical Sites" id="historical_sites" type="text" class="validate">
+            <input placeholder="Location" id="location" type="text" class="validate">
         </div>
       </div>
       <div class="row">
-        <div class="switch col s6">
-            <label>
-              Include Images?
-              <input type="checkbox" checked>
-              <span class="lever"></span>
-            </label>
+        <div class="col s12">
+          <label><h5>Type:</h5></label>
         </div>
-        <div class="switch col s6">
-            <label>
-              Include Videos?
-              <input type="checkbox" checked>
-              <span class="lever"></span>
-            </label>
+      </div>
+      <div class="row">
+        <div class="input-field col s4">
+          <select id="place-type-select">
+            <option value="all" selected>All</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <label><h5>Within: <span id="within_amt"></span></h5></label>
+          <p class="fine-text">Minimum 500 meters, Maximum 100,000 meters</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s2">
+          <input placeholder="Radius" id="within_amt_text" type="number" class="validate">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s4">
+            <p class="range-field">
+                <input type="range" id="radius" min="500" max="50000" />
+            </p>
         </div>
       </div>
       <div class="row">
           <div class="col s12">
-            <button class="btn waves-effect waves-light right blue darken-3" type="submit" name="action">Submit
+            <button id="send-query" class="btn waves-effect waves-light right blue darken-3" type="submit" name="action">Submit
                 <i class="material-icons right">send</i>
             </button>
           </div>
       </div>
     </form>
+    <div id="search-results">
+      
+    </div>
   </div>
+ 
+
+
 <!--End of Search Form-->
   <br><br>
   <br><br>
@@ -234,6 +253,7 @@
  </div>
  <!--Link Cards End-->
  
+
    <!--Footer-->
    <footer class="page-footer blue darken-3">
      <div class="container">
@@ -261,27 +281,6 @@
      </div>
    </footer>
    <!--End of Footer-->
-
-     
- 
-      
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/script.js"></script>

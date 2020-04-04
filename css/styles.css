@@ -39,3 +39,11 @@ select {
     font-style: italic;
     color: #ccc;
 }
+
+.card {
+    margin-right: 10px;
+}
+
+.card-content img {
+    margin: 0 auto;
+}

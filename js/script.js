@@ -161,9 +161,11 @@ function getUserLocation() {
 
 function executeSearch() {
 
+    var locationInfo = "";
+
     if (location_name !== "" && keywords_list !== "") {
-        const locationInfo = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + location_name + '&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating,geometry&key=' + PLACES_API_KEY;
-        searchPlaceInfo(locationInfo);
+        locationInfo = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + location_name + '&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating,geometry&key=' + PLACES_API_KEY;
+        searchLocation(locationInfo);
     }
 
     if (location_name === "" && keywords_list !== "") {
@@ -171,8 +173,8 @@ function executeSearch() {
     }
 
     if (keywords_list === "" && location_name !== "") {
-        const locationInfo = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + location_name + '&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating,geometry&key=' + PLACES_API_KEY;
-        searchPlaceInfo(locationInfo);
+        locationInfo = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + location_name + '&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating,geometry&key=' + PLACES_API_KEY;
+        searchLocation(locationInfo);
     }
 
     if (keywords_list === "" && location_name === "") {
@@ -181,12 +183,12 @@ function executeSearch() {
 
 }
 
-function searchPlaceInfo(placeInfo) {
+function searchLocation(placeInfo) {
 
     $.ajax({
         url: placeInfo,
         method: "GET",
-        success: sendPlaceInfoResponse,
+        success: sendLocationInfoResponse,
         error: function() {
             //ajax call failed:
             alert('Error!');
@@ -195,7 +197,7 @@ function searchPlaceInfo(placeInfo) {
 
 }
 
-function sendPlaceInfoResponse(response) {
+function sendLocationInfoResponse(response) {
 
     console.log("response: ", response);  
 
@@ -213,20 +215,12 @@ function sendPlaceInfoResponse(response) {
     //get location results address:
     var address = response.candidates[0].formatted_address;
 
-    //if location is left blank, use the user's geolocation:
-    if (location_name !== "") {
-        //get latitude:
-        lat = response.candidates[0].geometry.location.lat;
-        console.log("lat: " + lat);
-        //get longitude:
-        lng = response.candidates[0].geometry.location.lng;
-        console.log("lng: " + lng);
-    }
-    else {
-        //user's geolocation coords used:
-        console.log("your lat: " + lat)
-        console.log("your lng: " + lng);
-    }
+    //get place latitude:
+    lat = response.candidates[0].geometry.location.lat;
+    console.log("lat: " + lat);
+    //get longitude:
+    lng = response.candidates[0].geometry.location.lng;
+    console.log("lng: " + lng);    
 
     findPlaces();
 
@@ -236,7 +230,7 @@ function sendPlaceInfoResponse(response) {
 
 function findPlaces() {
 
-    var placeLocation;
+    var placeLocation = "";
 
     if (keywords_list !== "" && type !== "all") {
         placeLocation = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lng + '&radius=' + within + '&type=' + type + '&keyword=' + keywords_list + '&key=' + PLACES_API_KEY;
@@ -249,10 +243,6 @@ function findPlaces() {
     if (keywords_list !== "" && type === "all") {
         placeLocation = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lng + '&radius=' + within + '&keyword=' + keywords_list + '&key=' + PLACES_API_KEY;
     }   
-
-    if (keywords_list === "" && type === "all") {
-        placeLocation = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + lat + ',' + lng + '&radius=' + within + '&key=' + PLACES_API_KEY;
-    }
 
     getPlaceNearbyKeywordDetails(placeLocation);
 
@@ -283,26 +273,30 @@ function sendPlaceNearbyKeywordDetails(response) {
     $.each(places, function(index, place) {
 
         var place_name = place.name;
+        var place_id = place.place_id;
         var address = place.vicinity;
-        var open = place.opening_hours.open_now;
+        var open = "";
+        var opening_hours = "";
 
-        if (open !== undefined) {
+        if (place.opening_hours === undefined) {
+            opening_hours = '<span class="fine-text">Status Not Available</span>';
+        }
+        else {    
+            open = place.opening_hours.open_now;
             if (open === true) {
-                var opening_hours = "Open";
+                opening_hours = "Open";
             }
             else {
-                var opening_hours = "Closed";
+                opening_hours = "Closed";
             }
         }
-        else {
-            var opening_hours = '<span class="fine-text">Status Not Available</span>';
-        }
 
-        if (place.rating !== undefined) {
-            var avg_rating = place.rating;
+        var avg_rating = "";
+        if (place.rating === undefined) {
+            avg_rating = '<span class="fine-text">Not Available</span>';
         }
         else {
-            var avg_rating = '<span class="fine-text>Not Available</span>';
+            avg_rating = place.rating;
         }
 
         var type_categories = place.types;
@@ -315,7 +309,7 @@ function sendPlaceNearbyKeywordDetails(response) {
             photo_reference = '';
             author_ref = '';
         }
-        displayPlaceResults(place_name, author_ref, photo_reference, address, opening_hours, avg_rating, type_categories);
+        displayPlaceResults(place_name, place_id, author_ref, photo_reference, address, opening_hours, avg_rating, type_categories);
     });
     resetVariables();
 }
@@ -329,13 +323,13 @@ function displayLocationResults(place_name, author_ref, photo_reference, address
         var photo = '<p class="fine-text">Place Image Not Available</p>';
     }
 
-    $('#search-results').append('<h4>' + place_name + '</h4>' +
+    $('#search-results').prepend('<h4>' + place_name + '</h4>' +
                                 '<h6>' + address + '</h6>' +
                                  photo +
                                 '<p>Photo by: ' + author_ref + '</p>');
 }
 
-function displayPlaceResults(place_name, author_ref, photo_reference, address, opening_hours, avg_rating, type_categories) {
+function displayPlaceResults(place_name, place_id, author_ref, photo_reference, address, opening_hours, avg_rating, type_categories) {
 
     var categories = "";
 
@@ -350,16 +344,77 @@ function displayPlaceResults(place_name, author_ref, photo_reference, address, o
 
     if (photo_reference !== "") {
         var photo = '<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + photo_reference + '&key=' + PLACES_API_KEY + '" alt="' + place_name + '">';
+        var author = '<p class="fine-text">Photo by: ' + author_ref + '</p>';
     }
     else {
         var photo = '<p class="fine-text">Place Image Not Available</p>';
+        var author = '<p class="fine-text">Author not available</p>'
     }
 
         $('#search-results').append('<h4>' + place_name + '</h4>' +
                                     '<h6>' + address + '</h6>' +
                                     '<p>Is Currently ' + opening_hours + ' Rating: ' + avg_rating + '<p>' +
                                     photo +
-                                    '<p>Photo by: ' + author_ref + '</p>' + 
-                                    '<p>Type Categories: ' + categories + '</p>'
+                                    author +
+                                    '<p>Type Categories: ' + categories + '</p>' +
+  
+                                        '<button id="' + place_id + '" onclick="showPhotos(id);" class="btn waves-effect waves-light blue darken-3" type="button" name="action">' +
+                                            'Show Photos' +
+                                        '</button>'
+
                                     );
+}
+
+function showPhotos(place_id) {
+    console.log("place id: " + place_id);
+    var placeDetails = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=' + place_id + '&fields=address_component,formatted_address,geometry,icon,name,permanently_closed,photo,place_id,type,url,vicinity,opening_hours,website,price_level,rating,review,user_ratings_total&key=' + PLACES_API_KEY;
+
+    $.ajax({
+        url: placeDetails,
+        method: "GET",
+        success: sendPlacePhotos,
+        error: function() {
+            //ajax call failed:
+            alert('Error!');
+        }
+    });  
+}
+
+function sendPlacePhotos(response) {
+    console.log("Place Details: ", response);
+    var place = response.result;
+    var name = place.name;
+    var place_id = place.place_id;
+    var photos = place.photos;
+
+    $("#" + place_id).after('<div class="row">' +
+                                      '<div class="' + place_id + ' col s12 m12">' +
+                                      '</div>' +
+                            '</div>');
+
+    $("#" + place_id).attr('onclick', 'hidePhotos(id)').text("HIDE PHOTOS");
+
+    $.each(photos, function(index, photo) {
+        var photo_ref = photo.photo_reference;
+        var author_ref = photo.html_attributions;
+
+        addPhotos(name, place_id, photo_ref, author_ref);
+    });
+
+}
+
+function addPhotos(name, place_id, photo_ref, author_ref) {
+    $("." + place_id).append('<div class="card left">' + 
+                                '<div class="card-content">' +
+                                    '<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=225&photoreference=' + photo_ref + '&key=' + PLACES_API_KEY + '" alt="' + name + '">' +
+                                    '<div class="card-action">' +
+                                        '<p>Photo By: ' + author_ref + '</p>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>');
+}
+
+function hidePhotos(place_id) {
+    $('.' + place_id).remove();
+    $("#" + place_id).text("SHOW PHOTOS").attr('onclick', 'showPhotos(id)');
 }

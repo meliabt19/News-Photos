@@ -22,17 +22,41 @@
 </head>
 <body>
    <!--Navbar-->
-   <nav>
-       <div class="nav-wrapper blue darken-3">
-           <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
-           <ul class="right hide-on-med-and-down">
-            <li><a href="favorites.html" >Favorites</a></li>
-            <li><a href="search_form.html" >Search</a></li>
-            <li><a href="index.html">Home</a></li>
-          </ul>
-        </div>
-   </nav>
+  <div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper blue darken-3">
+            <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="favorites.html" >Favorites</a></li>
+              <li><a href="search_form.html" >Search</a></li>
+              <li><a href="index.html" >Home</a></li>
+            </ul>
+          </div>
+    </nav>
+  </div>
    <!--End of Navbar-->
+
+   <!-- Favorite Saved Confirmation -->
+   <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Place Saved to Favorites List</h4>
+      <p>You can view this place by clicking on the favorites link above.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect blue darken-3 btn-flat">Ok</a>
+    </div>
+  </div>
+
+  <!-- Photos button displays photos here -->
+   <div id="images-container" class="col s12">
+    <button id="close-photo-box" class="btn right blue darken-3" onclick="closeImageBox()"><i class="material-icons">close</i></button>
+    <div class="row">
+      <div class="photo-box">
+
+      </div>
+    </div>
+  </div>
+
    
    <!--Large Text-->
    <div class="section no-pad-bot" id="index-banner">
@@ -185,8 +209,8 @@
           </div>
       </div>
     </form>
-    <div id="search-results">
-      
+    <div id="place-search-results">
+
     </div>
   </div>
 <!--End of Search Form-->

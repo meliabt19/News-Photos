@@ -48,9 +48,12 @@ select {
     margin-right: 10px;
 }
 
+.card-content {
+    max-width: 400px;
+}
+
 .card-content img {
     margin: 0 auto;
-
 }
 
 hr { 
@@ -177,6 +180,7 @@ h3 {
 
 .card-image img {
     max-height: 400px;
+    max-width: 400px;
 }
 
 .img-not-available {
@@ -207,7 +211,6 @@ h3 {
     margin-left: 40px;
     margin-right: 40px;
     padding: 40px;
-    
 }
 
 .modal-close {

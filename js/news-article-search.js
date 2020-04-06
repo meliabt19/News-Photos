@@ -74,9 +74,6 @@ function addPlaceData(id, title, image, description, author, source) {
     place_info["photo_reference"] = description;
     place_info["address"] = author;
     place_info["opening_hours"] = source;
-    place_info["avg_rating"] = avg_rating;
-    place_info["type_categories"] = type_categories;
-    place_info["price_level"] = price_level;
 
     places_data.push(place_info);
 

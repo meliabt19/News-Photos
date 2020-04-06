@@ -51,6 +51,55 @@ select {
 
 .card-content img {
     margin: 0 auto;
+
+}
+
+hr { 
+    display: block;
+    margin-top: 10em;
+    margin-bottom: 10em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 10px;
+    border-color: lightgray;
+  } 
+
+h1 {
+    background-color: lightgray; 
+    border-radius: 20px; 
+    width: auto;
+    height: auto;
+
+}
+
+h2 {
+    background-color: lightgray; 
+    border-radius: 20px; 
+    width: auto;
+    height: auto;
+}
+
+h3 {
+    font-size: 50px;
+}
+
+#search-mod {
+    font-size: 32px;
+}
+
+.card {
+    margin-right: 10px;
+    min-height: 305px;
+    min-width: 100px;
+}
+
+.tabs {
+    color: blue;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding-right: 50px;
+    
 }
 
 .card-banner {
@@ -143,6 +192,7 @@ select {
     position: relative;
 }
 
+
 #images-container {
     display: none;
     background-color: #eee;
@@ -157,4 +207,5 @@ select {
 
 .modal-close {
     color: white;
+
 }

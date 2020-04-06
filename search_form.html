@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Reset CSS-->
+    <link type="text/css" rel="stylesheet" src="css/reset.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified CSS -->
@@ -10,42 +12,57 @@
     <!--Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <!--Local CSS-->
-   <link type="text/css" rel="stylesheet" src="css/styles.css">
-   <!--Reset CSS-->
-   <link type="text/css" rel="stylesheet" src="css/reset.css">
-    
-    <title>News & Photos Search</title>
-    <link rel="stylesheet" href="css/reset.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
+   <link type="text/css" rel="stylesheet" src="css/styles.css">  
+   <title>News & Photos Search</title>
 
 </head>
 <body>
    <!--Navbar-->
-   <nav>
-       <div class="nav-wrapper blue darken-3">
-           <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
-           <ul class="right hide-on-med-and-down">
+    <div class="navbar-fixed"> 
+      <nav>
+        <div class="nav-wrapper blue darken-3">
+          <a href="index.html" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active"><a href="search_form.html" >Search</a></li>
             <li><a href="favorites.html" >Favorites</a></li>
-            <li><a href="search_form.html" >Search</a></li>
-            <li><a href="index.html">Home</a></li>
           </ul>
         </div>
-   </nav>
+      </nav>
+    </div>
    <!--End of Navbar-->
-   
-   <!--Large Text-->
-   <div class="section no-pad-bot" id="index-banner">
-      <div class="container">
-        <h1 class="header center z-depth-3">Search Page</h1>
-        <div class="row center">
-          <h2 class="header col s12 light z-depth-3" id="search-mod">Fill in from the criteria below to retrieve news articles from certain areas, while also pulling up photos.</h2>
-        </div>
-      </div>
-   </div>
-  <!--Large Text-->
 
-   <!--Search Form-->
+    <!--Large Text-->
+    <div class="section no-pad-bot" id="index-banner">
+      <div class="container">
+          <h3 class="header center">Search Places and News Articles</h3>
+      </div>
+     </div>
+     <!--End of Large Text-->
+
+   <!-- Favorite Saved Confirmation -->
+
+   <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Place Saved to Favorites List</h4>
+      <p>You can view this place by clicking on the favorites link above.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect blue darken-3 btn-flat">Ok</a>
+    </div>
+  </div>
+
+  <!-- Photos button displays photos here -->
+   <div id="images-container" class="col s12">
+    <button id="close-photo-box" class="btn right blue darken-3" onclick="closeImageBox()"><i class="material-icons">close</i></button>
+    <div class="row">
+      <div class="photo-box">
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Search Form -->
    <div class="row">
     <form id="search-form" class="col s12">
         <div class="row">
@@ -185,23 +202,16 @@
           </div>
       </div>
     </form>
-    <div id="search-results">
-      
+    <div id="place-search-results">
+
     </div>
   </div>
 <!--End of Search Form-->
 
-<!--Tabs-->
-<div class="row">
-  <div class="col m6">
-    <ul class="tabs z-depth-3">
-      <li class="tab col s6"><a class="blue-text active" href="#test1">News</a></li>
-      <li class="tab col s6"><a class="blue-text active" href="#test2">Photos</a></li>
-    </ul>
+
+    </div>
   </div>
 </div>
-<!--End of Tabs-->
-
    <!--Footer-->
    <footer class="page-footer blue darken-3">
      <div class="container">
@@ -233,5 +243,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/script.js"></script>
+  
 </body>
 </html>

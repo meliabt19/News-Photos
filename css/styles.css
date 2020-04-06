@@ -25,7 +25,6 @@ input[type=range]+.thumb {
     background-color: #1565c0;
 }
 
-
 input[type=range], input[type=range]+.thumb {
     background-color: #1565c0;
     color: #1565c0;
@@ -39,6 +38,11 @@ select {
     font-size: 10pt;
     font-style: italic;
     color: #ccc;
+}
+
+.search_result .card {
+    margin-right: 10px;
+    min-height: 620px;
 }
 
 .card {
@@ -101,5 +105,107 @@ h3 {
 .card-banner {
     border-style: double;
     border-color: blue;
+}
+
+.card-subtitle {
+    font-size: 12pt;
+    color: white;
+}
+
+.card-content p {
+    font-size: 12pt;
+    padding: 10px 0;
+}
+
+.cat {
+    font-size: 9px;
+    font-style: italic;
+    color: #838485;
+    padding: 10px 0;
+    line-height: 1.5em;
+}
+
+.cat-title {
+    color: #000;
+}
+
+.btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.Open {
+    color: #2C9426;
+    font-weight: bold;
+}
+
+.Closed {
+    color: #A81E1E;
+    font-weight: bold;
+}
+
+.status {
+    font-size: 12pt;
+    color: #333;
+}
+
+.rating {
+    font-size: 12pt;
+    color: #333;
+    margin-left: 30px;
+}
+
+.rating-value {
+    color: #190F9E;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 12pt;
+    color: #333;
+    margin-left: 30px;
+}
+
+.price-value {
+    font-weight: bold;
+}
+
+.card-image img {
+    max-height: 400px;
+}
+
+.img-not-available {
+    background-color: #ccc;
+    height: 300px;
+    width: 400px;
+}
+
+.NA {
+    font-weight: bold;
+    font-size: 10pt;
+    font-style: italic;
+    color: #ccc;
+
+}
+
+#list-of-favorites {
+    position: relative;
+}
+
+
+#images-container {
+    display: none;
+    background-color: #eee;
+    position: absolute;
+    z-index: 9;
+    box-shadow: 3px 3px 3px #838485;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding: 40px;
+    
+}
+
+.modal-close {
+    color: white;
 
 }

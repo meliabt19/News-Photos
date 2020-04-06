@@ -77,3 +77,21 @@ h2 {
 h3 {
     font-size: 50px;
 }
+
+#search-mod {
+    font-size: 32px;
+}
+
+.card {
+    min-height: 305px;
+    min-width: 100px;
+}
+
+.tabs {
+    color: blue;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding-right: 50px;
+    
+}
+

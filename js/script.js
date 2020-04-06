@@ -48,6 +48,9 @@ $(document).ready(function() {
     });
 
     //favorites save confirmation:
+    $('.modal').modal();
+
+    //favorites save confirmation:
     $(document).ready(function(){
         $('.modal').modal();
       });

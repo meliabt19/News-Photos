@@ -83,7 +83,7 @@ function addPlaceData(id, title, image, description, author, source) {
 function addFavorite(id) {
 
     //find place id:
-    $.each(id, function(index, article) {
+    $.each(places_data, function(index, article) {
 
         if (id === article.id) {
 

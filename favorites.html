@@ -1,68 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Reset CSS-->
+    <link type="text/css" rel="stylesheet" src="css/reset.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <!--Local CSS-->
-   <link type="text/css" rel="stylesheet" src="css/styles.css">
-   <!--Reset CSS-->
-   <link type="text/css" rel="stylesheet" src="css/reset.css">
-    
-    <title>News & Photos-Favorites</title>
-
-    <link rel="stylesheet" href="css/reset.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="css/styles.css" type="text/css">
+   <link type="text/css" rel="stylesheet" src="css/styles.css">  
+   <title>News & Photos Favorites</title>
 
 </head>
 <body>
-<!--Navbar-->
-  <div class="navbar-fixed">
-    <nav>
+
+      <!--Navbar-->
+      <div class="navbar-fixed page-header"> 
+        <nav>
           <div class="nav-wrapper blue darken-3">
-            <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+            <a href="index.html" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
             <ul class="right hide-on-med-and-down">
-              <li><a href="favorites.html" >Favorites</a></li>
+              <li><a href="index.html">Dashboard</a></li>
               <li><a href="search_form.html" >Search</a></li>
-              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="favorites.html" >Favorites</a></li>
             </ul>
           </div>
-     </nav>
-  </div>
-  <!--End of Navbar-->
+        </nav>
+      </div>
+      <!--End of Navbar-->
+  <div class="container">
+    
+      <!--Large Text-->
+      <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
 
-    <!--Large Text-->
-    <div class="section no-pad-bot" id="index-banner">
-      <div class="container">
-        <br><br>
-
-        <h1 class="header center z-depth-3" id="favorites">Favorites</h1>
-        <div class="row center">
-          <h2 class="header col s12 light z-depth-3">View your favorited searched articles, photos, and images.</h2>
+          <h3 class="header center" id="favorites">Favorites</h3>
+          <div class="row center">
+            <h5 class="header light">Here is your list of your favorite places and news articles.</h5>
+          </div>
         </div>
       </div>
-    </div>
-  <!--Large Text-->
+      <!--Large Text-->
 
-  <div id="images-container" class="col s12">
-    <button id="close-photo-box" class="btn right blue darken-3" onclick="closeImageBox()"><i class="material-icons">close</i></button>
-    <div class="row">
-      <div class="photo-box">
-     </div>
+    <div id="images-container" class="col s12">
+      <button id="close-photo-box" class="btn right blue darken-3" onclick="closeImageBox()"><i class="material-icons">close</i></button>
+      <div class="row">
+        <div class="photo-box">
+      </div>
+      </div>
     </div>
-  </div>
-  <div id="list-of-favorites">
-  </div>
+    <div id="list-of-favorites">
+    </div>
+    
+  </div><!-- end container -->
 
- 
    <!--Footer-->
    <footer class="page-footer blue darken-3">
      <div class="container">
@@ -91,6 +86,7 @@
      </div>
    </footer>
    <!--End of Footer-->
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

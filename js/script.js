@@ -49,7 +49,8 @@ $(document).ready(function() {
 
     //favorites save confirmation:
     $('.modal').modal();
-      
+      });
+
     $("#place-type-select").on("change", function() {
         console.log('changed type');
         type = $("#place-type-select").val();

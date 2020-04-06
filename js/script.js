@@ -43,13 +43,15 @@ var scrollPosition = 0;
 
 $(document).ready(function() {
 
+    $("select").show();
+    $("#images-container").hide();
+
     $(window).scroll(function (event) {
         scrollPosition = $(window).scrollTop();
     });
 
     //favorites save confirmation:
     $('.modal').modal();
-      });
 
     $("#place-type-select").on("change", function() {
         console.log('changed type');

@@ -13,6 +13,7 @@ $(document).ready(function() {
 
 function getFavorites() {
 
+    $("#images-container").hide();
     $('#list-of-favorites').empty();
 
     var totalStorage = window.sessionStorage.length;

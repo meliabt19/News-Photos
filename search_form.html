@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,12 +11,10 @@
    <link type="text/css" rel="stylesheet" src="css/styles.css">
    <!--Reset CSS-->
    <link type="text/css" rel="stylesheet" src="css/reset.css">
-
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
- <title>News & Photos Search</title>
-
+    <title>News & Photos Search</title>
 
 </head>
 <body>
@@ -27,7 +25,8 @@
         <a href="index.html" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
         <ul class="right hide-on-med-and-down">
           <li><a href="index.html">Dashboard</a></li>
-          <li class="active"><a href="search_form.html" >Search</a></li>
+          <li class="active"><a href="search_form.html" >Search Places</a></li>
+          <li><a href="news-article-search.html">Search News</a></li>
           <li><a href="favorites.html" >Favorites</a></li>
         </ul>
       </div>
@@ -38,7 +37,7 @@
    <!--Large Text-->
    <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        <h3 class="header center">Search Places and News Articles</h3>
+        <h3 class="header center">Search Places</h3>
     </div>
    </div>
    <!--End of Large Text-->
@@ -67,94 +66,10 @@
     <!-- Search Form -->
    <div class="row">
     <form id="search-form" class="col s12">
-        <div class="row">
+      <div class="row">
             <div class="input-field col s12">
                 <input placeholder="Keywords" id="keywords" type="text" class="validate">
             </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <label><h4>News:</h4></label>
-            </div>
-          </div>
-        <div class="row">
-            <div class="col s12">
-              <label><h5>Category:</h5></label>
-            </div>
-          </div>
-            <div class="row">
-                <div class="col s2">
-                    <label>
-                        <input name="article_category" type="radio" checked />
-                        <span>All</span>
-                    </label>
-                </div>
-                <div class="col s2">
-                    <label>
-                        <input name="article_category" type="radio"  />
-                        <span>Politics</span>
-                    </label>
-                </div>
-                <div class="col s2">
-                    <label>
-                        <input name="article_category" type="radio" />
-                        <span>Traffic</span>
-                    </label>
-                </div>
-                <div class="col s2">
-                    <label>
-                        <input name="article_category" type="radio" />
-                        <span>Sports</span>
-                    </label>
-                </div>
-                <div class="col s2">
-                    <label>
-                        <input name="article_category" type="radio" />
-                        <span>Weather</span>
-                    </label>
-                </div>
-          </div>
-          <div class="row">
-            <div class="col s12">
-                <label><h5>Articles:</h5></label>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" checked />
-                    <span>All</span>
-                </label>
-            </div>
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" />
-                    <span>Headlines</span>
-                </label>
-            </div>
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" />
-                    <span>This Week</span>
-                </label>
-            </div>
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" />
-                    <span>This Month</span>
-                </label>
-            </div>
-            <div class="col s2">
-                <label>
-                    <input name="articles" type="radio" />
-                    <span>This Year</span>
-                </label>
-            </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-            <label><h4>Places:</h4></label>
-        </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
@@ -208,8 +123,22 @@
 
     </div>
   </div>
+
+  <!-- Preloader wheel -->
+  <div id="loader" class="preloader-wrapper big active center-align">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+  <!-- End Preloader wheel -->
 <!--End of Search Form-->
-  
+
     <!--Footer-->
     <footer class="page-footer blue darken-3">
       <div class="container">
@@ -238,9 +167,9 @@
       </div>
     </footer>
     <!--End of Footer-->
-  
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <!-- <script src="js/news-article-search.js"></script> -->
      <script src="js/script.js"></script>
 </body>
 </html>

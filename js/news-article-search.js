@@ -1,3 +1,4 @@
+
 let article_info = {};
 let article_data = [];
 
@@ -38,6 +39,7 @@ $(document).ready(function(){
                                                             '</div>' +
                                                           '</div>');
                     }
+
                     for(var x in latestNews){
 
                         addArticleData(latestNews[x].publishedAt, latestNews[x].title, latestNews[x].urlToImage, latestNews[x].url, latestNews[x].description, latestNews[x].author, latestNews[x].source.name);
@@ -56,8 +58,7 @@ $(document).ready(function(){
                             </div>
                           </div>
                         </div>`;
-
-                        
+                       
                     }
                     if(output !== ""){
                         $("#place-cards").html(output);
@@ -76,7 +77,6 @@ $(document).ready(function(){
     });
 });
 
-
 function addArticleData(id, title, image, url, description, author, source) {
 
     article_info = {};
@@ -93,10 +93,10 @@ function addArticleData(id, title, image, url, description, author, source) {
 
 }
 
-
 function addFavorite(id) {
 
     //find place id:
+
     $.each(article_data, function(index, article) {
 
         if (id === article.article_time_stamp) {

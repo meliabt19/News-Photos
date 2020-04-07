@@ -1,3 +1,14 @@
+
+
+#loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+  }
+
+
 .switch label input[type=checkbox]:checked+.lever:after {
     /* darker blue */
     background-color: #1565c0;
@@ -42,6 +53,11 @@ select {
 .search_result .card {
     margin-right: 10px;
     min-height: 620px;
+}
+
+.article_search_result .card {
+    margin-right: 10px;
+    min-height: 650px;
 }
 
 .card {

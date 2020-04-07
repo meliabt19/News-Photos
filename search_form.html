@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -11,12 +11,10 @@
    <link type="text/css" rel="stylesheet" src="css/styles.css">
    <!--Reset CSS-->
    <link type="text/css" rel="stylesheet" src="css/reset.css">
-
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
- <title>News & Photos Search</title>
-
+    <title>News & Photos Search</title>
 
 </head>
 <body>
@@ -68,11 +66,11 @@
     <!-- Search Form -->
    <div class="row">
     <form id="search-form" class="col s12">
-        <div class="row">
+      <div class="row">
             <div class="input-field col s12">
                 <input placeholder="Keywords" id="keywords" type="text" class="validate">
             </div>
-        </div>
+      </div>
       <div class="row">
         <div class="input-field col s12">
             <input placeholder="Place Name" id="place_name" type="text" class="validate">
@@ -125,8 +123,22 @@
 
     </div>
   </div>
+
+  <!-- Preloader wheel -->
+  <div id="loader" class="preloader-wrapper big active center-align">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+  <!-- End Preloader wheel -->
 <!--End of Search Form-->
-  
+
     <!--Footer-->
     <footer class="page-footer blue darken-3">
       <div class="container">
@@ -155,9 +167,9 @@
       </div>
     </footer>
     <!--End of Footer-->
-  
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <!-- <script src="js/news-article-search.js"></script> -->
      <script src="js/script.js"></script>
 </body>
 </html>

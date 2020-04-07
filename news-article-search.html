@@ -47,14 +47,26 @@
    <!-- Favorite Saved Confirmation -->
    <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Place Saved to Favorites List</h4>
-      <p>You can view this place by clicking on the favorites link above.</p>
+
+      <h4>Article Saved to Favorites List</h4>
+      <p>You can view this article by clicking on the favorites link above.</p>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect blue darken-3 btn-flat">Ok</a>
     </div>
   </div>
 
+
+  <!-- Photos button displays photos here -->
+   <div id="images-container" class="col s12">
+    <button id="close-photo-box" class="btn right blue darken-3" onclick="closeImageBox()"><i class="material-icons">close</i></button>
+    <div class="row">
+      <div class="photo-box">
+
+      </div>
+    </div>
+  </div>
+  
     <!-- Search Form -->
    <div class="row">
     <form id="search-form" class="col s12">
@@ -76,11 +88,26 @@
           </div>
       </div>
     </form>
-    <div id="place-search-results">
 
+    <div id="newsResults">
+     
     </div>
   </div>
 <!--End of Search Form-->
+
+    <!-- Preloader wheel -->
+    <div id="loader" class="preloader-wrapper big active center-align">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <!-- End Preloader wheel -->
   
     <!--Footer-->
     <footer class="page-footer blue darken-3">

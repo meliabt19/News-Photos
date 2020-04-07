@@ -1,10 +1,5 @@
-//const NEWS_API_KEY = 'a75938fbed57442696e756c8b556a3e8';
-const PLACES_API_KEY = 'AIzaSyA226PQXOi5BSA7kJuRJYQxforZ980b7_s';
-//const newsURL = 'http://newsapi.org/v2/everything?q=bitcoin&from=2020-02-29&sortBy=publishedAt&apiKey=' + NEWS_API_KEY;
 
-//my coords:
-//lat: 35.69
-//lng: -77.94
+const PLACES_API_KEY = 'AIzaSyA226PQXOi5BSA7kJuRJYQxforZ980b7_s';
 
 var place_types = [
                     {value: "airport", text: "Airport"}, {value: "amusement_park", text: "Amusement Park"}, {value: "aquarium", text: "Aquarium"}, {value: "art_gallery", text: "Art Gallery"},
@@ -43,6 +38,7 @@ var scrollPosition = 0;
 
 $(document).ready(function() {
 
+    $("#loader").hide();
     $("select").show();
     $("#images-container").hide();
 
@@ -66,6 +62,7 @@ $(document).ready(function() {
 
     $('#search-form').submit(function(event) {
         event.preventDefault();
+
         resetVariables();
 
         $("#place-search-results").empty();
@@ -158,6 +155,7 @@ function getUserLocation() {
 
     getPosition()
         .then((position) => {
+
         console.log(position);
 
         //set coords globals:
@@ -202,6 +200,12 @@ function searchLocation(placeInfo) {
     $.ajax({
         url: placeInfo,
         method: "GET",
+        beforeSend: function(){
+            $("#loader").show();
+          },
+          complete: function(){
+            $("#loader").hide();
+        },
         success: sendLocationInfoResponse,
         error: function() {
             //ajax call failed:
@@ -273,6 +277,12 @@ function getPlaceNearbyKeywordDetails(placeLocation) {
     $.ajax({
         url: placeLocation,
         method: "GET",
+        beforeSend: function(){
+            $("#loader").show();
+          },
+          complete: function(){
+            $("#loader").hide();
+        },
         success: sendPlaceNearbyKeywordDetails,
         error: function() {
             //ajax call failed:
@@ -612,6 +622,12 @@ function showPhotos(place_id) {
     $.ajax({
         url: placeDetails,
         method: "GET",
+        beforeSend: function(){
+            $("#loader").show();
+          },
+          complete: function(){
+            $("#loader").hide();
+        },
         success: sendPlacePhotos,
         error: function() {
             //ajax call failed:
@@ -626,7 +642,7 @@ function sendPlacePhotos(response) {
     var name = place.name;
     var photos = place.photos;
 
-    $("#images-container").css({top: scrollPosition, position: 'absolute'}).show();
+    $("#images-container").css({top: scrollPosition + 50, position: 'absolute'}).show();
 
     $.each(photos, function(index, photo) {
         var photo_ref = photo.photo_reference;

@@ -14,24 +14,25 @@
 
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="css/styles.css" type="text/css">  
- <title>News & Photos Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <title>News & Photos Dashboard</title>
 
 </head>
 <body>
    <!--Navbar-->
    <div class="navbar-fixed"> 
     <nav>
-       <div class="nav-wrapper blue darken-3">
-         <a href="index.html" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
-         <ul class="right hide-on-med-and-down">
-           <li class="active"><a href="index.html">Dashboard</a></li>
-           <li><a href="search_form.html" >Search</a></li>
-           <li><a href="favorites.html" >Favorites</a></li>
-         </ul>
-       </div>
-   </nav>
-</div>
+      <div class="nav-wrapper blue darken-3">
+        <a href="index.html" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a href="index.html">Dashboard</a></li>
+          <li><a href="search_form.html" >Search Places</a></li>
+          <li><a href="news-article-search.html">Search News</a></li>
+          <li><a href="favorites.html" >Favorites</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 <!--End of Navbar-->
 
 <!--Large Text-->
@@ -42,69 +43,83 @@
 </div>
 <!--End of Large Text-->
 
-    <!--Link Cards-->
-    <div class="row center-align">
-      <div class="section">
-       <div class="col m6">
-         <div class="card">
-           <div class="card-image z-depth-5">
-             <img src="https://images.onlinelabels.com/images/clip-art/nicubunu/nicubunu_Card_symbols_Heart.png">
-           <span class="card-title black-text" tyle="width:100%; background: rgba(0, 0, 0, 0.5);">Favorites</span>
+        <!--Link Cards-->
+        <div class="row center-align">
+          <div class="section">
+           <div class="col m4">
+             <div class="card">
+               <div class="card-image z-depth-5">
+                 <img src="https://images.onlinelabels.com/images/clip-art/nicubunu/nicubunu_Card_symbols_Heart.png">
+               <span class="card-title black-text" tyle="width:100%; background: rgba(0, 0, 0, 0.5);">Favorites</span>
+               </div>
+               <div class="card-content z-depth-5">
+                 <p>Click the button below to view the places and news articles you added to your favorites page.</p>
+               </div>
+               <div class="card-action">
+                 <a href="favorites.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">thumb_up</i>Favorites</a>
+               </div>
+             </div>
            </div>
-           <div class="card-content z-depth-5">
-             <p>Click the button below to view the places and news articles you added to your favorites page.</p>
-           </div>
-           <div class="card-action">
-             <a href="favorites.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">thumb_up</i>Favorites</a>
-           </div>
+           <div class="col m4">
+            <div class="card">
+              <div class="card-image z-depth-5">
+                  <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.coastalliving.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1000x1000%2Fpublic%2Fimage%2F2017%2F02%2Fmain%2Fanna-maria-island-681558679.jpg%3Fitok%3DH_kPpGHw">
+                <span class="card-title black-text" tyle="width:100%; background: rgba(0, 0, 0, 0.5);">Search Places</span>
+              </div>
+              <div class="card-content z-depth-5">
+                <p>Click the button below to search for places on location, distance, and type categories.</p>
+              </div>
+              <div class="card-action">
+                <a href="search_form.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">search</i>Search</a>
+              </div>
+            </div>
+          </div>
+          <div class="col m4">
+            <div class="card">
+              <div class="card-image z-depth-5">
+                  <img src="https://www.scientistfactory.com/wp-content/uploads/2019/02/Magnifying_glass.jpg">
+                <span class="card-title black-text" tyle="width:100%; background: rgba(0, 0, 0, 0.5);">Search News</span>
+              </div>
+              <div class="card-content z-depth-5">
+                <p>Click the button below to search news articles based on location, distance, and type categories.</p>
+              </div>
+              <div class="card-action">
+                <a href="news-article-search.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">search</i>Search</a>
+              </div>
+            </div>
+          </div>
          </div>
-       </div>
-       <div class="col m6">
-         <div class="card">
-           <div class="card-image z-depth-5">
-               <img src="https://www.scientistfactory.com/wp-content/uploads/2019/02/Magnifying_glass.jpg">
-             <span class="card-title black-text" tyle="width:100%; background: rgba(0, 0, 0, 0.5);">Search</span>
-           </div>
-           <div class="card-content z-depth-5">
-             <p>Click the button below to search for places and news articles based on location, distance, and type categories.</p>
-           </div>
-           <div class="card-action">
-             <a href="search_form.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">search</i>Search</a>
-           </div>
          </div>
-       </div>
-     </div>
-     </div>
-     <!--Link Cards End-->
+         <!--Link Cards End-->
 
   <!--Footer-->
-    <footer class="page-footer blue darken-3">
+  <footer class="page-footer blue darken-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Created by</h5>
+          <p class="grey-text text-lighten-4">Sam Guevara, Britt Melia, and Nicholas Romano </p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Contributors Githubs</h5>
+          <ul>
+           <li><a class="grey-text text-lighten-3" href="https://github.com/samuelguevara98">Sam's Github</a></li>
+           <br>
+           <li><a class="grey-text text-lighten-3" href="https://github.com/meliabt19">Britts Github</a></li>
+           <br>
+           <li><a class="grey-text text-lighten-3" href="https://github.com/nicholas-romano">Nicks Github</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
       <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Created by</h5>
-            <p class="grey-text text-lighten-4">Sam Guevara, Britt Melia, and Nicholas Romano </p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Contributors Githubs</h5>
-            <ul>
-             <li><a class="grey-text text-lighten-3" href="https://github.com/samuelguevara98">Sam's Github</a></li>
-             <br>
-             <li><a class="grey-text text-lighten-3" href="https://github.com/meliabt19">Britts Github</a></li>
-             <br>
-             <li><a class="grey-text text-lighten-3" href="https://github.com/nicholas-romano">Nicks Github</a></li>
-            </ul>
-          </div>
-        </div>
+      © 2020 Copyright 
+      <a class="grey-text text-lighten-4 right" href="#!"></a>
       </div>
-      <div class="footer-copyright">
-        <div class="container">
-        © 2020 Copyright 
-        <a class="grey-text text-lighten-4 right" href="#!"></a>
-        </div>
-      </div>
-    </footer>
-    <!--End of Footer-->
+    </div>
+  </footer>
+  <!--End of Footer-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

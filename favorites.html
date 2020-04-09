@@ -19,21 +19,28 @@
  
 </head>
 <body>
-   <!--Navbar-->
-   <div class="navbar-fixed"> 
+  <!--Navbar-->
+  <div class="navbar-fixed"> 
     <nav>
       <div class="nav-wrapper blue darken-3">
-        <a href="index.html" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+        <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="index.html">Dashboard</a></li>
-
-          <li><a href="search_form.html" >Search Places</a></li>
+          <li><a href="places-search.html">Search Places</a></li>
           <li><a href="news-article-search.html">Search News</a></li>
-          <li class="active"><a href="favorites.html" >Favorites</a></li>
+          <li class="active"><a href="favorites.html">Favorites</a></li>
         </ul>
       </div>
     </nav>
   </div>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="index.html">Dashboard</a></li>
+    <li><a href="places-search.html">Search Places</a></li>
+    <li><a href="news-article-search.html">Search News</a></li>
+    <li class="active"><a href="favorites.html">Favorites</a></li>
+  </ul>
   <!--End of Navbar-->
 
     <!--Large Text-->
@@ -94,6 +101,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/favorites-script.js"></script>
+    <script src="js/mobile-nav.js"></script>
+    <script src="js/favorites.js"></script>
 </body>
 </html>

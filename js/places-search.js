@@ -282,7 +282,7 @@ function sendPlaceNearbyKeywordDetails(response) {
 
     if (response.status === "ZERO_RESULTS" || response.status === "INVALID_REQUEST") {
         $('#place-search-results').html('<div class="row">' +
-                                            '<div class="col s12 m7">' +
+                                            '<div class="col s12 m8">' +
                                                 '<div class="card">' +
                                                     '<div class="card-content">' +
                                                         '<div class="card-title">' +
@@ -589,9 +589,9 @@ function addFavorite(place_id) {
 
         if (place_id === place.place_id) {
 
-            //set sessionStorage:
+            //set localStorage:
             place = JSON.stringify(place);
-            sessionStorage.setItem(place_id, place);
+            window.localStorage.setItem(place_id, place);
 
         }
 

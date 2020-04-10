@@ -21,20 +21,28 @@
 </head>
 <body>
    <!--Navbar-->
-   <div class="navbar-fixed"> 
+  <div class="navbar-fixed"> 
     <nav>
       <div class="nav-wrapper blue darken-3">
-        <a href="index.html" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+        <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="index.html">Dashboard</a></li>
-          <li><a href="search_form.html" >Search Places</a></li>
+          <li><a href="places-search.html">Search Places</a></li>
           <li class="active"><a href="news-article-search.html">Search News</a></li>
-          <li><a href="favorites.html" >Favorites</a></li>
+          <li><a href="favorites.html">Favorites</a></li>
         </ul>
       </div>
     </nav>
   </div>
-   <!--End of Navbar-->
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="index.html">Dashboard</a></li>
+    <li><a href="places-search.html">Search Places</a></li>
+    <li class="active"><a href="news-article-search.html">Search News</a></li>
+    <li><a href="favorites.html">Favorites</a></li>
+  </ul>
+  <!--End of Navbar-->
    
    <!--Large Text-->
    <div class="section no-pad-bot" id="index-banner">
@@ -68,18 +76,13 @@
   </div>
   
     <!-- Search Form -->
-   <div class="row">
-    <form id="search-form" class="col s12">
+      <div class="row">
+        <form id="search-form" class="col s12">
         <div class="row">
             <div class="input-field col s12">
                 <input placeholder="Keywords" id="keywords" type="text" class="validate">
             </div>
         </div>
-        <div class="row">
-            <div class="col s12">
-                <label><h4>News:</h4></label>
-            </div>
-          </div>
       <div class="row">
           <div class="col s12">
             <button id="send-query" class="btn waves-effect waves-light right blue darken-3" type="submit" name="action">Submit
@@ -140,6 +143,7 @@
   
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <script src="js/mobile-nav.js"></script>
      <script src="js/news-article-search.js"></script>
 </body>
 </html>

@@ -50,7 +50,6 @@ $(document).ready(function() {
     $('.modal').modal();
 
     $("#place-type-select").on("change", function() {
-        console.log('changed type');
         type = $("#place-type-select").val();
     });
 
@@ -69,7 +68,6 @@ $(document).ready(function() {
 
         //get place input:
         var place_name = $("#place_name").val();
-        console.log("place_name: ", place_name);
 
         //get keyword input:
         keywords_list = $("#keywords").val();
@@ -82,16 +80,13 @@ $(document).ready(function() {
             //add place name to keywords list:
             keywords_list = keywords_list.split(" ").join("+");
             keywords_list = keywords_list.toString().trim();
-            console.log("keywords_list " + keywords_list);
         }
 
         //get type input:
         type = $("#place-type-select option:selected").val();
-        console.log("type: " + type);
 
         //get location input:
         location_name = $("#location").val();
-        console.log("location: ", location_name);
 
         if (location_name === "") {
             getUserLocation();
@@ -156,8 +151,6 @@ function getUserLocation() {
     getPosition()
         .then((position) => {
 
-        console.log(position);
-
         //set coords globals:
         lat = position.coords.latitude;
         lng = position.coords.longitude;
@@ -209,15 +202,13 @@ function searchLocation(placeInfo) {
         success: sendLocationInfoResponse,
         error: function() {
             //ajax call failed:
-            console.log('searchLocation error');
+            console.log('Location Search failed.');
         }
     });
 
 }
 
 function sendLocationInfoResponse(response) {
-
-    console.log("response: ", response);
 
     var location = response.candidates[0];
 
@@ -226,24 +217,20 @@ function sendLocationInfoResponse(response) {
 
     //get place name result:
     var place_results_name = location.name;
-    console.log('place name: ' + place_results_name);
 
     //get photo ref:
     var photo_reference = location.photos[0].photo_reference;
 
     //get author name and link:
     var author_ref = location.photos[0].html_attributions;
-    console.log('photo reference: ' + photo_reference);
 
     //get location results address:
     var address = location.formatted_address;
 
     //get place latitude:
     lat = location.geometry.location.lat;
-    console.log("lat: " + lat);
     //get longitude:
     lng = location.geometry.location.lng;
-    console.log("lng: " + lng);
 
     var type_categories = location.types;
 
@@ -286,7 +273,7 @@ function getPlaceNearbyKeywordDetails(placeLocation) {
         success: sendPlaceNearbyKeywordDetails,
         error: function() {
             //ajax call failed:
-            console.log('getPlaceNearbyKeywordDetails error');
+            console.log('Search Place Details failed.');
         }
     });
 }
@@ -307,8 +294,6 @@ function sendPlaceNearbyKeywordDetails(response) {
                                        '</div>'
                                         );
     }
-
-    console.log("Place Nearby Keyword Details: ", response);
 
     var places = response.results;
 
@@ -616,7 +601,6 @@ function addFavorite(place_id) {
 function showPhotos(place_id) {
     $(".photo-box").empty();
     $("#images-container").hide();
-    console.log("place id: " + place_id);
     var placeDetails = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=' + place_id + '&fields=address_component,formatted_address,geometry,icon,name,permanently_closed,photo,place_id,type,url,vicinity,opening_hours,website,price_level,rating,review,user_ratings_total&key=' + PLACES_API_KEY;
 
     $.ajax({
@@ -637,7 +621,6 @@ function showPhotos(place_id) {
 }
 
 function sendPlacePhotos(response) {
-    console.log("Place Photos: ", response);
     var place = response.result;
     var name = place.name;
     var photos = place.photos;

@@ -25,15 +25,12 @@ function getFavorites() {
           //loop through all local storage keys:
           var favorite = window.sessionStorage.key(i);
 
-          console.log("favorite " + favorite);
-
           //get favorite data:
           var favData = JSON.parse(sessionStorage.getItem(favorite));
 
             if(favData.hasOwnProperty("article_time_stamp")){
 
-                console.log("this is an article");
-
+                //this is a news article
                 var article_id = favData.article_time_stamp;
                 var article_title = favData.article_title;
                 var article_image = favData.article_image;
@@ -47,10 +44,7 @@ function getFavorites() {
             }
             else {
 
-                console.log("this is a place");
-
-                console.log("Favorite Data: ", favData);
-
+                //this is a place
                 var place_address = favData.address;
                 var place_id = favData.place_id;
                 var place_name = favData.place_name;
@@ -83,19 +77,11 @@ function getFavorites() {
 
 function sendArticleData(article_id, article_title, article_image, article_url, article_description, article_author, article_source) {
 
-    console.log(article_id);
-    console.log(article_title);
-    console.log(article_image);
-    console.log(article_url);
-    console.log(article_description);
-    console.log(article_author);
-    console.log(article_source);
-
     if ( $('#list-of-favorites').children().length === 0 ) {
         addSearchResultsContainer();
     }
 
-    $('#place-cards').append('<div class="col xl3 l4 m6 s12 article_search_result">' +
+    $('#place-cards').append('<div class="col xl3 l4 m6 s12 search_result">' +
                                 '<div class="card">' +
                                     '<div class="card-image">' +
                                         '<img src="' + article_image + '">' +
@@ -254,7 +240,6 @@ function getAuthorTag(photo_reference, author_ref) {
 function showPhotos(place_id) {
     $(".photo-box").empty();
     $('#images-container').hide();
-    console.log("place id: " + place_id);
     var placeDetails = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=' + place_id + '&fields=address_component,formatted_address,geometry,icon,name,permanently_closed,photo,place_id,type,url,vicinity,opening_hours,website,price_level,rating,review,user_ratings_total&key=' + PLACES_API_KEY;
 
     $.ajax({
@@ -269,7 +254,6 @@ function showPhotos(place_id) {
 }
 
 function sendPlacePhotos(response) {
-    console.log("Place Photos: ", response);
     var place = response.result;
     var name = place.name;
     var photos = place.photos;

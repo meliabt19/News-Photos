@@ -45,7 +45,7 @@ $(document).ready(function(){
                         addArticleData(latestNews[x].publishedAt, latestNews[x].title, latestNews[x].urlToImage, latestNews[x].url, latestNews[x].description, latestNews[x].author, latestNews[x].source.name);
 
                     output +=`
-                        <div class="col xl3 l4 m6 s12 article_search_result">
+                        <div class="col xl3 l4 m6 s12 search_result">
                           <div class="card">
                             <div class="card-image">
                               <img src="${latestNews[x].urlToImage}">
@@ -68,11 +68,11 @@ $(document).ready(function(){
                     }
                 },
                 error: function(){
-                    console.log("error");
+                    console.log("News Search Request failed.");
                 }
             })
         }else{
-            console.log("Please enter something");
+            console.log("Please enter a search term above.");
         }
     });
 });

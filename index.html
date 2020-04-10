@@ -4,15 +4,8 @@
 <head>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Material Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <!--Local CSS-->
-   <link type="text/css" rel="stylesheet" src="css/styles.css">
-   <!--Reset CSS-->
-   <link type="text/css" rel="stylesheet" src="css/reset.css">
-
     <link rel="stylesheet" href="css/reset.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="css/styles.css" type="text/css">
@@ -20,21 +13,29 @@
 
 </head>
 <body>
-   <!--Navbar-->
-   <div class="navbar-fixed"> 
-    <nav>
 
+   <!--Navbar-->
+  <div class="navbar-fixed"> 
+    <nav>
       <div class="nav-wrapper blue darken-3">
-        <a href="index.html" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+        <a href="#!" class="brand-logo"><i class="material-icons">blur_on</i>News and Photos</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li class="active"><a href="index.html">Dashboard</a></li>
-          <li><a href="search_form.html" >Search Places</a></li>
+          <li><a href="places-search.html">Search Places</a></li>
           <li><a href="news-article-search.html">Search News</a></li>
-          <li><a href="favorites.html" >Favorites</a></li>
+          <li><a href="favorites.html">Favorites</a></li>
         </ul>
       </div>
     </nav>
   </div>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li class="active"><a href="index.html">Dashboard</a></li>
+    <li><a href="places-search.html">Search Places</a></li>
+    <li><a href="news-article-search.html">Search News</a></li>
+    <li><a href="favorites.html">Favorites</a></li>
+  </ul>
 <!--End of Navbar-->
 
 <!--Large Text-->
@@ -49,45 +50,45 @@
         <!--Link Cards-->
         <div class="row center-align">
           <div class="section">
-           <div class="col m4">
+           <div class="col m4 s12">
              <div class="card">
-               <div class="card-image z-depth-5">
-                 <img src="https://images.onlinelabels.com/images/clip-art/nicubunu/nicubunu_Card_symbols_Heart.png">
-               <span class="card-title black-text" tyle="width:100%; background: rgba(0, 0, 0, 0.5);">Favorites</span>
+               <div class="dashboard card-image z-depth-5">
+                 <img class="responsive-img" src="images/pinned-map.jpg" alt="View Favorites">
+               <span id="favorites-title" class="card-title black-text">Favorites</span>
                </div>
                <div class="card-content z-depth-5">
                  <p>Click the button below to view the places and news articles you added to your favorites page.</p>
                </div>
                <div class="card-action">
-                 <a href="favorites.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">thumb_up</i>Favorites</a>
+                 <a id="favorites" href="favorites.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">thumb_up</i>Favorites</a>
                </div>
              </div>
            </div>
-           <div class="col m4">
+           <div class="col m4 s12">
             <div class="card">
-              <div class="card-image z-depth-5">
-                  <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimg1.coastalliving.timeinc.net%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1000x1000%2Fpublic%2Fimage%2F2017%2F02%2Fmain%2Fanna-maria-island-681558679.jpg%3Fitok%3DH_kPpGHw">
-                <span class="card-title black-text" tyle="width:100%; background: rgba(0, 0, 0, 0.5);">Search Places</span>
+              <div class="dashboard card-image z-depth-5">
+                  <img class="responsive-img" src="images/raleigh-nc.jpg" alt="Search City">
+                <span id="places-title" class="card-title black-text">Search Places</span>
               </div>
               <div class="card-content z-depth-5">
                 <p>Click the button below to search for places on location, distance, and type categories.</p>
               </div>
               <div class="card-action">
-                <a href="search_form.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">search</i>Search</a>
+                <a id="places" href="places-search.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">search</i>Places</a>
               </div>
             </div>
           </div>
-          <div class="col m4">
+          <div class="col m4 s12">
             <div class="card">
-              <div class="card-image z-depth-5">
-                  <img src="https://www.scientistfactory.com/wp-content/uploads/2019/02/Magnifying_glass.jpg">
-                <span class="card-title black-text" tyle="width:100%; background: rgba(0, 0, 0, 0.5);">Search News</span>
+              <div class="dashboard card-image z-depth-5">
+                  <img class="responsive-img" src="images/newspaper.jpg" alt="Search News">
+                <span id="news-title" class="card-title black-text">Search News</span>
               </div>
               <div class="card-content z-depth-5">
                 <p>Click the button below to search news articles based on location, distance, and type categories.</p>
               </div>
               <div class="card-action">
-                <a href="news-article-search.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">search</i>Search</a>
+                <a id="news" href="news-article-search.html" class="waves-effect waves-light blue darken-3 btn"><i class="material-icons right">search</i>News</a>
               </div>
             </div>
           </div>
@@ -127,5 +128,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/mobile-nav.js"></script>
 </body>
 </html

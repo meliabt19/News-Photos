@@ -16,17 +16,17 @@ function getFavorites() {
     $("#images-container").hide();
     $('#list-of-favorites').empty();
 
-    var totalStorage = window.sessionStorage.length;
+    var totalStorage = window.localStorage.length;
 
     if (totalStorage !== null) {
 
       for (var i = 0; i < totalStorage; i++) {
 
           //loop through all local storage keys:
-          var favorite = window.sessionStorage.key(i);
+          var favorite = window.localStorage.key(i);
 
           //get favorite data:
-          var favData = JSON.parse(sessionStorage.getItem(favorite));
+          var favData = JSON.parse(localStorage.getItem(favorite));
 
             if(favData.hasOwnProperty("article_time_stamp")){
 
@@ -89,7 +89,7 @@ function sendArticleData(article_id, article_title, article_image, article_url, 
                                     '<div class="card-content">' +
                                         '<a href="' + article_url + '" target="_blank"><h5 class="card-title">' + article_title + '</h5></a>' +
                                         '<p>' + article_description + '</p>' +
-                                        '<p><strong>By:</strong>' + article_author + ', ' + article_source + '<p>' +
+                                        '<p><strong>By:</strong> ' + article_author + ', ' + article_source + '<p>' +
                                         '<a name="' + article_id + '" onclick="removeFavorite(name)" class="btn waves-effect waves-light blue darken-3 modal-trigger">Remove<i class="material-icons right">cancel</i></a>' +
                                     '</div>' +
                                 '</div>' +
@@ -287,6 +287,6 @@ function closeImageBox() {
 }
 
 function removeFavorite(id) {
-    window.sessionStorage.removeItem(id);
+    window.localStorage.removeItem(id);
     getFavorites();
 }

@@ -46,11 +46,6 @@ input[type=range]+.thumb {
     background-color: #1565c0;
 }
 
-input[type=range], input[type=range]+.thumb {
-    background-color: #1565c0;
-    color: #1565c0;
-}
-
 select {
     display: block;
 }
@@ -296,6 +291,7 @@ h3 {
     #favorites-title, #places-title, #news-title {
         font-size: 14pt;
     }
+    
 }
 
 @media only screen and (max-width: 600px) {
@@ -324,11 +320,19 @@ h3 {
     #favorites-title, #places-title, #news-title {
         font-size: 18pt;
     }
+
+    .nav-wrapper .brand-logo {
+        font-size: 14pt;
+    }
 }
 
 @media only screen and (max-width: 537px) {
     h3.header {
         font-size: 20pt;
     } 
+
+    .nav-wrapper .brand-logo {
+        font-size: 12pt;
+    }
     
 }

@@ -1,3 +1,25 @@
+#loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+  }
+
+  .sidenav li.active {
+      background-color: #90caf9;
+
+  }
+
+  .sidenav li:hover {
+      background-color: #1565c0;
+      color: white;
+  }
+
+  .sidenav li a:hover {
+    color: white;
+}
+
 .switch label input[type=checkbox]:checked+.lever:after {
     /* darker blue */
     background-color: #1565c0;
@@ -24,11 +46,6 @@ input[type=range]+.thumb {
     background-color: #1565c0;
 }
 
-input[type=range], input[type=range]+.thumb {
-    background-color: #1565c0;
-    color: #1565c0;
-}
-
 select {
     display: block;
 }
@@ -40,19 +57,25 @@ select {
 }
 
 .search_result .card {
-    margin-right: 10px;
-    min-height: 620px;
+    min-height: 650px;
 }
 
-.card {
-    margin-right: 10px;
+#favorites-title, #places-title, #news-title {
+    font-size: 18pt;
+    text-align: center;
+    background-color: white;
+    width: 100%;
+    opacity: .7;
 }
 
-.card-content {
+
+
+.dashboard.card-content {
     max-width: 400px;
+    margin: 0 auto;
 }
 
-.card-content img {
+.dashboard.card-content img {
     margin: 0 auto;
 }
 
@@ -174,13 +197,11 @@ h3 {
 }
 
 .card-image {
-    max-width: 400px;
     margin: 0 auto;
 }
 
 .card-image img {
     max-height: 400px;
-    max-width: 400px;
 }
 
 .img-not-available {
@@ -215,4 +236,94 @@ h3 {
 
 .modal-close {
     color: white;
+}
+
+
+@media only screen and (max-width: 992px) {
+    h3.header {
+        font-size: 30pt;
+    }
+    .card-action #favorites {
+        min-width: 145px;
+    }
+    
+    .card-action #places {
+        min-width: 123px;
+    }
+    
+    .card-action #news {
+        min-width: 110px;
+    }
+
+    #favorites-title, #places-title, #news-title {
+        font-size: 18pt;
+        text-align: center;
+    }
+
+    #favorites-title, #places-title, #news-title {
+        font-size: 16pt;
+    }
+}
+
+@media only screen and (max-width: 718px) {
+
+    .card-action #favorites {
+        min-width: 128px;
+        font-size: 8pt;
+    }
+    
+    .card-action #places {
+        min-width: 113px;
+        font-size: 8pt;
+    }
+    
+    .card-action #news {
+        min-width: 100px;
+        font-size: 8pt;
+    }
+
+    #favorites-title, #places-title, #news-title {
+        font-size: 14pt;
+    }
+    
+}
+
+@media only screen and (max-width: 600px) {
+    h3.header {
+        font-size: 22pt;
+    }
+
+    .card-action #favorites {
+        min-width: 145px;
+        font-size: 12pt;
+    }
+    
+    .card-action #places {
+        min-width: 123px;
+        font-size: 12pt;
+    }
+    
+    .card-action #news {
+        min-width: 110px;
+        font-size: 12pt;
+    }
+
+    #favorites-title, #places-title, #news-title {
+        font-size: 18pt;
+    }
+
+    .nav-wrapper .brand-logo {
+        font-size: 14pt;
+    }
+}
+
+@media only screen and (max-width: 537px) {
+    h3.header {
+        font-size: 20pt;
+    } 
+
+    .nav-wrapper .brand-logo {
+        font-size: 12pt;
+    }
+    
 }

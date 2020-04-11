@@ -16,47 +16,84 @@ function getFavorites() {
     $("#images-container").hide();
     $('#list-of-favorites').empty();
 
-    var totalStorage = window.sessionStorage.length;
+    var totalStorage = window.localStorage.length;
 
     if (totalStorage !== null) {
 
       for (var i = 0; i < totalStorage; i++) {
 
           //loop through all local storage keys:
-          var favorite = window.sessionStorage.key(i);
+          var favorite = window.localStorage.key(i);
 
           //get favorite data:
-          var favData = JSON.parse(sessionStorage.getItem(favorite));
+          var favData = JSON.parse(localStorage.getItem(favorite));
 
-          console.log("Favorite Data: ", favData);
+            if(favData.hasOwnProperty("article_time_stamp")){
 
-          var place_address = favData.address;
-          var place_id = favData.place_id;
-          var place_name = favData.place_name;
-          var photo_reference = favData.photo_reference;
-          var author_ref = favData.author_ref;
-          var type_categories = favData.type_categories;
+                //this is a news article
+                var article_id = favData.article_time_stamp;
+                var article_title = favData.article_title;
+                var article_image = favData.article_image;
+                var article_url = favData.article_url;
+                var article_description = favData.article_description;
+                var article_author = favData.article_author;
+                var article_source = favData.article_source;
 
-          if (favData.opening_hours === undefined || favData.avg_rating === undefined || favData.price_level === undefined) {
+                sendArticleData(article_id, article_title, article_image, article_url, article_description, article_author, article_source);
 
-            displayLocationFavorite(place_id, place_name, photo_reference, author_ref, type_categories, place_address);
+            }
+            else {
 
-          }
-          else {
+                //this is a place
+                var place_address = favData.address;
+                var place_id = favData.place_id;
+                var place_name = favData.place_name;
+                var photo_reference = favData.photo_reference;
+                var author_ref = favData.author_ref;
+                var type_categories = favData.type_categories;
 
-            var opening_hours = favData.opening_hours;
-            var avg_rating = favData.avg_rating;
-            var price_level = favData.price_level;
+                if (favData.opening_hours === undefined || favData.avg_rating === undefined || favData.price_level === undefined) {
 
-            displayPlaceFavorite(place_id, place_name, photo_reference, author_ref, photo_reference, type_categories, place_address, opening_hours, price_level, avg_rating);
+                    displayLocationFavorite(place_id, place_name, photo_reference, author_ref, type_categories, place_address);
 
-          }
+                }
+                else {
 
+                    var opening_hours = favData.opening_hours;
+                    var avg_rating = favData.avg_rating;
+                    var price_level = favData.price_level;
 
+                    displayPlaceFavorite(place_id, place_name, photo_reference, author_ref, photo_reference, type_categories, place_address, opening_hours, price_level, avg_rating);
+
+                }
+
+            }
 
       }
 
     }
+
+}
+
+function sendArticleData(article_id, article_title, article_image, article_url, article_description, article_author, article_source) {
+
+    if ( $('#list-of-favorites').children().length === 0 ) {
+        addSearchResultsContainer();
+    }
+
+    $('#place-cards').append('<div class="col xl3 l4 m6 s12 search_result">' +
+                                '<div class="card">' +
+                                    '<div class="card-image">' +
+                                        '<img src="' + article_image + '">' +
+                                    '</div>' +
+                                    '<div class="card-content">' +
+                                        '<a href="' + article_url + '" target="_blank"><h5 class="card-title">' + article_title + '</h5></a>' +
+                                        '<p>' + article_description + '</p>' +
+                                        '<p><strong>By:</strong> ' + article_author + ', ' + article_source + '<p>' +
+                                        '<a name="' + article_id + '" onclick="removeFavorite(name)" class="btn waves-effect waves-light blue darken-3 modal-trigger">Remove<i class="material-icons right">cancel</i></a>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>');
 
 }
 
@@ -203,7 +240,6 @@ function getAuthorTag(photo_reference, author_ref) {
 function showPhotos(place_id) {
     $(".photo-box").empty();
     $('#images-container').hide();
-    console.log("place id: " + place_id);
     var placeDetails = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/details/json?place_id=' + place_id + '&fields=address_component,formatted_address,geometry,icon,name,permanently_closed,photo,place_id,type,url,vicinity,opening_hours,website,price_level,rating,review,user_ratings_total&key=' + PLACES_API_KEY;
 
     $.ajax({
@@ -218,12 +254,11 @@ function showPhotos(place_id) {
 }
 
 function sendPlacePhotos(response) {
-    console.log("Place Photos: ", response);
     var place = response.result;
     var name = place.name;
     var photos = place.photos;
 
-    $("#images-container").css({top: scrollPosition, position: 'absolute'}).show();
+    $("#images-container").css({top: scrollPosition + 50, position: 'absolute'}).show();
 
     $.each(photos, function(index, photo) {
         var photo_ref = photo.photo_reference;
@@ -251,7 +286,7 @@ function closeImageBox() {
     $('#images-container').hide();
 }
 
-function removeFavorite(place_id) {
-    window.sessionStorage.removeItem(place_id);
+function removeFavorite(id) {
+    window.localStorage.removeItem(id);
     getFavorites();
 }

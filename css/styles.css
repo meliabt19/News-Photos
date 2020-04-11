@@ -68,9 +68,7 @@ select {
     opacity: .7;
 }
 
-.card {
-    margin-right: 10px;
-}
+
 
 .dashboard.card-content {
     max-width: 400px;
@@ -199,13 +197,11 @@ h3 {
 }
 
 .card-image {
-    max-width: 400px;
     margin: 0 auto;
 }
 
 .card-image img {
     max-height: 400px;
-    max-width: 400px;
 }
 
 .img-not-available {

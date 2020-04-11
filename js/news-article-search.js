@@ -40,24 +40,41 @@ $(document).ready(function(){
                                                           '</div>');
                     }
 
-                    for(var x in latestNews){
+                    for (var x in latestNews){
 
-                        addArticleData(latestNews[x].publishedAt, latestNews[x].title, latestNews[x].urlToImage, latestNews[x].url, latestNews[x].description, latestNews[x].author, latestNews[x].source.name);
+                        var photoURL;
 
-                    output +=`
-                        <div class="col xl3 l4 m6 s12 search_result">
-                          <div class="card">
-                            <div class="card-image">
-                              <img src="${latestNews[x].urlToImage}">
+                        if (latestNews[x].urlToImage === null) {
+                            photoURL = "images/image-not-available.png";
+                        }
+                        else {
+                            photoURL = latestNews[x].urlToImage;
+                        }
+
+                        var author;
+                        if (latestNews[x].author === null) {
+                            author = '<span class="NA">NA</span>';
+                        }
+                        else {
+                            author = latestNews[x].author;
+                        }
+
+                        addArticleData(latestNews[x].publishedAt, latestNews[x].title, photoURL, latestNews[x].url, latestNews[x].description, author, latestNews[x].source.name);
+
+                        output +=`
+                            <div class="col xl3 l4 m6 s12 search_result">
+                            <div class="card">
+                                <div class="card-image">
+                                <img src="${photoURL}">
+                                </div>
+                                <div class="card-content">
+                                    <a href="${latestNews[x].url}" target="_blank"><h5 class="card-title">${latestNews[x].title}</h5></a>
+                                    <p>${latestNews[x].description}</p>
+                                    <p><strong>By:</strong> ${author}, ${latestNews[x].source.name}<p>
+                                    <a name="${latestNews[x].publishedAt}" onclick="addFavorite(name)" href="#modal1" class="btn waves-effect waves-light blue darken-3 modal-trigger">Add<i class="material-icons right">thumb_up</i></a>
+                                </div>
                             </div>
-                            <div class="card-content">
-                                <a href="${latestNews[x].url}" target="_blank"><h5 class="card-title">${latestNews[x].title}</h5></a>
-                                <p>${latestNews[x].description}</p>
-                                <p><strong>By:</strong><a href="${latestNews[x].author}"></a>, ${latestNews[x].source.name}<p>
-                                <a name="${latestNews[x].publishedAt}" onclick="addFavorite(name)" href="#modal1" class="btn waves-effect waves-light blue darken-3 modal-trigger">Add<i class="material-icons right">thumb_up</i></a>
-                            </div>
-                          </div>
-                        </div>`;
+                            </div>`;
                        
                     }
                     if(output !== ""){
@@ -103,7 +120,7 @@ function addFavorite(id) {
 
             //set sessionStorage:
             article = JSON.stringify(article);
-            sessionStorage.setItem(id, article);
+            window.localStorage.setItem(id, article);
 
         }
 
